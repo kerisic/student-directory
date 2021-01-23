@@ -1,9 +1,8 @@
 @students = [] # an empty array accessible to all methods
-#Let's put all students into an array
+
 def input_students
   puts "Please enter the names of the students"
-  puts "To finish, just hit return"
-  @students = []
+  puts "To finish, just hit return" 
   puts "What is the student's name?"
   name = gets.chomp
   while !name.empty? do
