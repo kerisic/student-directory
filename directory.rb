@@ -32,6 +32,10 @@ def process(selection)
   end
 end
 
+def enterstudents(name, cohort)
+  @students << {name: name, cohort: cohort.to_sym}
+end
+
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return" 
@@ -41,7 +45,7 @@ def input_students
     puts "Which cohort?"
     cohort = STDIN.gets.chomp
     cohort = november if cohort.empty? == true
-    @students << {name: name, cohort: cohort.to_sym}
+    enterstudents(name, cohort)
     if @students.length == 1
       puts "Now we have 1 student"
     else
@@ -93,7 +97,7 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(" , ")
-    @students << {name: name, cohort: cohort.to_sym}
+    enterstudents(name, cohort)
   end
   file.close
 end
